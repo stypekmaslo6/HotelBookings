@@ -1,0 +1,164 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Hotel Listings";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hotel-card {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hotel-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .room-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-form {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .filter-item {
+            display: flex;
+            flex-direction: column;
+            min-width: 150px;
+        }
+
+            .filter-item label {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .filter-item select,
+            .filter-item input {
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            .filter-item button {
+                padding: 8px 16px;
+                border: none;
+                background-color: #4CAF50;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- filtering -->
+        <form method="get" class="filter-form">
+            <h2>Filter Hotels</h2>
+
+            <div class="filter-row">
+                <div class="filter-item">
+                    <label for="hotel">Select Hotel:</label>
+                    <select id="hotel" name="hotel">
+                        <option value="">All Hotels</option>
+                        @foreach (var hotel in Model.Hotels.Select(h => h.Name).Distinct())
+                        {
+                            <option value="@hotel">@hotel</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label for="roomType">Room Type:</label>
+                    <select id="roomType" name="roomType">
+                        <option value="">All Room Types</option>
+                        @foreach (var roomType in Model.Hotels.SelectMany(h => h.RoomTypes).Select(rt => rt.Code).Distinct())
+                        {
+                            <option value="@roomType">@roomType</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label for="checkIn">Check-In Date:</label>
+                    <input type="date" id="checkIn" name="checkIn" value="@Model.CheckInDate?.ToString("yyyy-MM-dd")">
+                </div>
+
+                <div class="filter-item">
+                    <label for="checkOut">Check-Out Date:</label>
+                    <input type="date" id="checkOut" name="checkOut" value="@Model.CheckOutDate?.ToString("yyyy-MM-dd")">
+                </div>
+
+                <div class="filter-item">
+                    <button type="submit">Check Availability</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- listing -->
+        @foreach (var hotel in Model.FilteredHotels)
+        {
+            <div class="hotel-card">
+                <div class="hotel-name">@hotel.Name</div>
+                <div class="room-types">
+                    @foreach (var roomType in hotel.RoomTypes)
+                    {
+                        <div class="room-card">
+                            <div><strong>@roomType.Description</strong> (Code: @roomType.Code)</div>
+                            <p><strong>Amenities:</strong> @string.Join(", ", roomType.Amenities)</p>
+                            <p><strong>Features:</strong> @string.Join(", ", roomType.Features)</p>
+
+                            @if (roomType.AvailableRooms != null)
+                            {
+                                <p><strong>Available Rooms:</strong> @roomType.AvailableRooms</p>  <!-- Wyświetl liczbę dostępnych pokoi tylko, gdy dostępność jest określona -->
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

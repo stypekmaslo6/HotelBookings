@@ -1,0 +1,132 @@
+[
+    {
+        "id": "H1",
+        "name": "Hotel California",
+        "roomTypes": [
+            {
+                "code": "SGL",
+                "description": "Single Room",
+                "amenities": ["WiFi", "TV"],
+                "features": ["Non-smoking"]
+            },
+            {
+                "code": "DBL",
+                "description": "Double Room",
+                "amenities": ["WiFi", "TV", "Minibar"],
+                "features": ["Non-smoking", "Sea View"]
+            }
+        ],
+        "rooms": [
+            { "roomType": "SGL", "roomId": "101" },
+            { "roomType": "SGL", "roomId": "102" },
+            { "roomType": "DBL", "roomId": "201" },
+            { "roomType": "DBL", "roomId": "202" }
+        ]
+    },
+    {
+        "id": "H2",
+        "name": "Sunset Paradise",
+        "roomTypes": [
+            {
+                "code": "SGL",
+                "description": "Single Room",
+                "amenities": ["WiFi", "TV", "Air Conditioning"],
+                "features": ["Non-smoking"]
+            },
+            {
+                "code": "DBL",
+                "description": "Double Room with Pool View",
+                "amenities": ["WiFi", "TV", "Minibar", "Balcony"],
+                "features": ["Non-smoking", "Pool View"]
+            }
+        ],
+        "rooms": [
+            { "roomType": "SGL", "roomId": "301" },
+            { "roomType": "SGL", "roomId": "302" },
+            { "roomType": "DBL", "roomId": "401" },
+            { "roomType": "DBL", "roomId": "402" }
+        ]
+    },
+    {
+        "id": "H3",
+        "name": "Mountain Retreat",
+        "roomTypes": [
+            {
+                "code": "SGL",
+                "description": "Single Room with Mountain View",
+                "amenities": ["WiFi", "TV", "Heating"],
+                "features": ["Non-smoking", "Mountain View"]
+            },
+            {
+                "code": "DBL",
+                "description": "Double Room with Fireplace",
+                "amenities": ["WiFi", "TV", "Fireplace"],
+                "features": ["Non-smoking", "Mountain View"]
+            }
+        ],
+        "rooms": [
+            { "roomType": "SGL", "roomId": "501" },
+            { "roomType": "SGL", "roomId": "502" },
+            { "roomType": "DBL", "roomId": "601" },
+            { "roomType": "DBL", "roomId": "602" }
+        ]
+    },
+    {
+        "id": "H4",
+        "name": "Urban Inn",
+        "roomTypes": [
+            {
+                "code": "SGL",
+                "description": "Single Room",
+                "amenities": ["WiFi", "TV", "Coffee Maker"],
+                "features": ["Non-smoking", "City View"]
+            },
+            {
+                "code": "DBL",
+                "description": "Double Room Deluxe",
+                "amenities": ["WiFi", "TV", "Minibar", "Coffee Maker"],
+                "features": ["Non-smoking", "City View"]
+            },
+            {
+                "code": "STU",
+                "description": "Studio Apartment",
+                "amenities": ["WiFi", "TV", "Kitchenette", "Coffee Maker"],
+                "features": ["Non-smoking", "City View"]
+            }
+        ],
+        "rooms": [
+            { "roomType": "SGL", "roomId": "701" },
+            { "roomType": "DBL", "roomId": "702" },
+            { "roomType": "STU", "roomId": "703" }
+        ]
+    },
+    {
+        "id": "H5",
+        "name": "Seaside Resort",
+        "roomTypes": [
+            {
+                "code": "SGL",
+                "description": "Single Room with Garden View",
+                "amenities": ["WiFi", "TV", "Air Conditioning"],
+                "features": ["Non-smoking", "Garden View"]
+            },
+            {
+                "code": "DBL",
+                "description": "Double Room with Ocean View",
+                "amenities": ["WiFi", "TV", "Minibar", "Balcony"],
+                "features": ["Non-smoking", "Ocean View"]
+            },
+            {
+                "code": "SUI",
+                "description": "Suite",
+                "amenities": ["WiFi", "TV", "Minibar", "Living Room", "Balcony"],
+                "features": ["Non-smoking", "Ocean View"]
+            }
+        ],
+        "rooms": [
+            { "roomType": "SGL", "roomId": "801" },
+            { "roomType": "DBL", "roomId": "802" },
+            { "roomType": "SUI", "roomId": "803" }
+        ]
+    }
+]
